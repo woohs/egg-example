@@ -8,8 +8,7 @@ class NewsService extends Service {
 
     // use build-in http client to GET hacker-news api
     const { data: idList } = await this.ctx.curl(
-      `${serverUrl}/topstories.json`,
-      {
+      `${serverUrl}/topstories.json`, {
         data: {
           orderBy: '"$key"',
           startAt: `"${pageSize * (page - 1)}"`,

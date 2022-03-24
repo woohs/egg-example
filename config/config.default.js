@@ -16,7 +16,9 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1648023778254_4977';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'robot' ];
+
+  config.proxy = true;
 
   // add your user config here
   const userConfig = {
@@ -24,14 +26,19 @@ module.exports = appInfo => {
   };
 
   const news = {
-    pageSize: 5,
+    pageSize: 30,
     serverUrl: 'https://hacker-news.firebaseio.com/v0',
+  };
+
+  const robot = {
+    ua: [ /Baiduspider/i ],
   };
 
   return {
     ...config,
     ...userConfig,
     news,
+    robot,
     view: {
       defaultViewEngine: 'nunjucks',
       mapping: {
